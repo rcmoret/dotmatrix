@@ -63,6 +63,8 @@ Plug 'exu/pgsql.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'mxw/vim-jsx'
 Plug 'hashrocket/vim-hashrocket'
+Plug 'scrooloose/nerdtree'
+Plug 'flazz/vim-colorschemes'
 
 " staticly check code and highlight errors (async syntastic replacement)
 Plug 'w0rp/ale'

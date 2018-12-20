@@ -3,6 +3,16 @@
 
 source "$HOME/.sharedrc"
 
+alias 'be'='bundle exec'
+alias 'g'='git status'
+alias 'gbr'='git branch'
+alias 'ggl'='git log --oneline --abbrev-commit --all --graph --color --decorate'
+alias 'gg'='git log --oneline --abbrev-commit --all --graph --color | head'
+alias 'grh'='git reset HEAD'
+alias 'gs'='git stash'
+alias 'gsp'='git stash pop'
+alias 'll'='ls -la'
+
 # Store 10,000 history entries
 export HISTSIZE=10000
 # Don't store duplicates
@@ -19,6 +29,9 @@ CLICOLOR=1
 LSCOLORS=gxgxcxdxbxegedabagacad
 
 export VISUAL EDITOR LESS RI PSQL_EDITOR CLICOLOR LSCOLORS
+export IMAC='ryanmoret@192.168.1.81'
+
+alias 'ssh_imac'='ssh $IMAC'
 
 if [ -t 1 ]; then
 bind 'set bind-tty-special-chars off'
