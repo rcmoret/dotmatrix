@@ -60,4 +60,17 @@ if [ -f '/usr/local/etc/bash_completion.d/git-completion.bash' ]; then
   source '/usr/local/etc/bash_completion.d/git-completion.bash'
 fi
 
+# use `g` like git
+_g() {
+  if [[ $# > 0 ]]; then
+    git "$@"
+  else
+    git status
+  fi
+}
+
+alias g=_g
+# enable completion for `g`
+__git_complete g _git
+
 [ ! -f "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
