@@ -17,7 +17,7 @@ set visualbell
 set wildmenu
 set wildmode=list:longest,full
 
-colorscheme abra
+colorscheme vylight
 
 set splitright
 set splitbelow
