@@ -13,6 +13,8 @@ alias 'gs'='git stash'
 alias 'gsp'='git stash pop'
 alias 'll'='ls -la'
 
+shovel() ( cd ~/vagrant/code/dev && ./script/run shovel "$@"; )
+
 # Store 10,000 history entries
 export HISTSIZE=10000
 # Don't store duplicates
