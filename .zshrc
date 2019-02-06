@@ -128,3 +128,5 @@ cdpath=(~ ~/src $DEV_DIR $SOURCE_DIR)
 typeset -aU path
 
 command -v brew > /dev/null && [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

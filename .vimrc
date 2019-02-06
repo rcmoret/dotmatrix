@@ -19,6 +19,14 @@ set wildmode=list:longest,full
 
 colorscheme vylight
 
+set rtp+=/usr/local/opt/fzf
+
+nnoremap <C-p> :GFiles <cr>
+let g:fzf_action = {
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
+
 set splitright
 set splitbelow
 
@@ -27,7 +35,6 @@ set hidden
 set guifont=Monaco:h16
 set guioptions-=T guioptions-=e guioptions-=L guioptions-=r
 set shell=bash
-
 
 augroup vimrc
   autocmd!

@@ -33,6 +33,16 @@ LSCOLORS=gxgxcxdxbxegedabagacad
 export VISUAL EDITOR LESS RI PSQL_EDITOR CLICOLOR LSCOLORS
 export IMAC='ryanmoret@192.168.1.81'
 
+if [ -f ~/.fzf.bash ]; then
+  source ~/.fzf.bash
+fi
+
+export FZF_DEFAULT_COMMAND='
+(git ls-tree -r --name-only HEAD ||
+  find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
+    sed s/^..//) 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 alias 'ssh_imac'='ssh $IMAC'
 
 if [ -t 1 ]; then

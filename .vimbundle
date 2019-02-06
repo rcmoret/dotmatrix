@@ -9,8 +9,9 @@ end
 
 call plug#begin('~/.vim/bundle')
 
-
 " Make sure you use single quotes
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'adamlowe/vim-slurper'
 Plug 'jbranchaud/vim-bdubs'
