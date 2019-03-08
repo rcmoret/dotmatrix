@@ -11,6 +11,8 @@ filetype plugin indent on
 set ignorecase
 set smartcase
 set number
+set autoread
+au CursorHold * checktime
 
 set visualbell
 

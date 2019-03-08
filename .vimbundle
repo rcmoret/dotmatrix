@@ -10,6 +10,7 @@ end
 call plug#begin('~/.vim/bundle')
 
 " Make sure you use single quotes
+Plug 'djoshea/vim-autoread'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'AndrewRadev/splitjoin.vim'
