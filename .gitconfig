@@ -32,8 +32,6 @@
 	whitespace = warn
 [help]
 	autocorrect = 10
-[interactive]
-	singlekey = true
 [merge]
 	summary = true
 [merge "bundlelock"]
@@ -52,5 +50,7 @@
 	path = ~/.gitconfig.local
 [fetch]
 	prune = true
+[add]
+	patch = true
 [commit]
 	verbose = true
