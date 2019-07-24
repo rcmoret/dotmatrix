@@ -8,7 +8,7 @@ endif
 syntax on
 filetype plugin indent on
 
-set ignorecase
+" set ignorecase
 set smartcase
 set number
 set autoread
@@ -37,6 +37,7 @@ set hidden
 set guifont=Monaco:h16
 set guioptions-=T guioptions-=e guioptions-=L guioptions-=r
 set shell=bash
+set wrap!
 
 augroup vimrc
   autocmd!
