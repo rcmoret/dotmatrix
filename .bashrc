@@ -43,7 +43,7 @@ export FZF_DEFAULT_COMMAND='
     sed s/^..//) 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-alias 'ssh_imac'='ssh $IMAC'
+alias 'ssh-imac'='ssh $IMAC'
 
 if [ -t 1 ]; then
 bind 'set bind-tty-special-chars off'
