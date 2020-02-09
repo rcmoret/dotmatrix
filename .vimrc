@@ -39,6 +39,8 @@ set guioptions-=T guioptions-=e guioptions-=L guioptions-=r
 set shell=bash
 set wrap!
 
+autocmd VimResized * wincmd =
+
 augroup vimrc
   autocmd!
   autocmd GuiEnter * set columns=120 lines=70 number

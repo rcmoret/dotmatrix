@@ -11,6 +11,8 @@ call plug#begin('~/.vim/bundle')
 
 " Make sure you use single quotes
 Plug 'djoshea/vim-autoread'
+Plug 'ap/vim-css-color'
+Plug 'othree/csscomplete.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -55,6 +57,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-vividchalk'
+Plug 'rhysd/vim-crystal'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'vim-scripts/bufkill.vim'
@@ -67,6 +70,7 @@ Plug 'mxw/vim-jsx'
 Plug 'hashrocket/vim-hashrocket'
 Plug 'scrooloose/nerdtree'
 Plug 'flazz/vim-colorschemes'
+Plug 'christoomey/vim-tmux-runner'
 
 " staticly check code and highlight errors (async syntastic replacement)
 Plug 'w0rp/ale'

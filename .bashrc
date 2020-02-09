@@ -12,6 +12,9 @@ alias 'grh'='git reset HEAD'
 alias 'gs'='git stash'
 alias 'gsp'='git stash pop'
 alias 'll'='ls -la'
+alias 'cprmt'='less ~/repos/misc/rmt.md | pbcopy'
+alias 'cpemd'='less ~/repos/misc/emd.md | pbcopy'
+alias 'add-ssh-key'='ssh-add -K ~/.ssh/id_rsa'
 
 shovel() ( cd ~/vagrant/code/dev && ./script/run shovel "$@"; )
 
@@ -32,6 +35,7 @@ LSCOLORS=gxgxcxdxbxegedabagacad
 
 export VISUAL EDITOR LESS RI PSQL_EDITOR CLICOLOR LSCOLORS
 export IMAC='ryanmoret@192.168.1.81'
+export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
 if [ -f ~/.fzf.bash ]; then
   source ~/.fzf.bash
@@ -84,3 +88,7 @@ alias g=_g
 __git_complete g _git
 
 [ ! -f "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
