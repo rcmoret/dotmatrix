@@ -75,7 +75,7 @@ if [ -n "$SSH_CONNECTION" ]; then
 else
   p='%{$fg_bold[green]%}%n@%m'
 fi
-PROMPT="$p%{\$reset_color%}:%{\$fg_bold[cyan]%}%~%{\$reset_color%}\$(git_prompt_info '(%s)')%# "
+PROMPT="$p%{\$reset_color%}:%{\$fg_bold[cyan]%}%~%{\$reset_color%}\$(git_prompt_info '(%s)')~> "
 
 # show non-success exit code in right prompt
 RPROMPT="%(?..{%{$fg[red]%}%?%{$reset_color%}})"
@@ -94,7 +94,7 @@ export PSQL_EDITOR='vim -c"setf sql"'
 
 # aliases
 alias l="ls -F -G -lah"
-alias ll="ls -l"
+alias ll="ls -la"
 alias la="ls -a"
 alias lsd='ls -ld *(-/DN)'
 alias md='mkdir -p'
@@ -103,9 +103,26 @@ alias cd..='cd ..'
 alias ..='cd ..'
 alias groutes='rake routes | grep $@'
 
+alias 'be'='bundle exec'
+alias 'g'='git status'
+alias 'gbr'='git branch'
+alias 'ggl'='git log --oneline --abbrev-commit --all --graph --color --decorate'
+alias 'gg'='git log --oneline --abbrev-commit --all --graph --color | head'
+alias 'grh'='git reset HEAD'
+alias 'gs'='git stash'
+alias 'gsp'='git stash pop'
+alias 'cprmt'='less ~/repos/misc/rmt.md | pbcopy'
+alias 'cpemd'='less ~/repos/misc/emd.md | pbcopy'
+alias 'add-ssh-key'='ssh-add -K ~/.ssh/id_rsa'
+export IMAC='ryanmoret@192.168.1.81'
+alias 'ssh-imac'='ssh $IMAC'
+
 l.() {
   ls -ld "${1:-$PWD}"/.[^.]*
 }
+
+export PLATFORM_DEV="$HOME/repos/dev"
+shovel() ( $PLATFORM_DEV/script/run shovel "$@"; )
 
 # rvm-install added line:
 if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then source "$HOME/.rvm/scripts/rvm" ; fi
@@ -130,3 +147,11 @@ typeset -aU path
 command -v brew > /dev/null && [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+bindkey "\e[3~" delete-char
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
