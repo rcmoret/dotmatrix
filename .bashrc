@@ -25,6 +25,8 @@ export HISTCONTROL=erasedups
 # Append to history file
 shopt -s histappend
 
+export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
+
 VISUAL=vim
 EDITOR="$VISUAL"
 LESS="FRX"
@@ -32,6 +34,8 @@ RI="--format ansi -T"
 PSQL_EDITOR='vim -c"setf sql"'
 CLICOLOR=1
 LSCOLORS=gxgxcxdxbxegedabagacad
+LDFLAGS="-L/usr/local/opt/llvm@8/lib -Wl,-rpath,/usr/local/opt/llvm@8/lib"
+CPPFLAGS="-I/usr/local/opt/llvm@8/include"
 
 export VISUAL EDITOR LESS RI PSQL_EDITOR CLICOLOR LSCOLORS
 export IMAC='ryanmoret@192.168.1.81'

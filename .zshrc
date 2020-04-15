@@ -13,6 +13,7 @@ export LSCOLORS=Dxfxcxdxbxegedabadacad
 export ZLS_COLORS=$LSCOLORS
 export LC_CTYPE=en_US.UTF-8
 export LESS=FRX
+export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
 export FZF_CTRL_T_OPTS=" --preview 'bat --style=numbers --color=always {} | head -500'"
 export VISUAL EDITOR LESS RI PSQL_EDITOR CLICOLOR LSCOLORS
@@ -25,6 +26,8 @@ RI="--format ansi -T"
 PSQL_EDITOR='vim -c"setf sql"'
 CLICOLOR=1
 LSCOLORS=gxgxcxdxbxegedabagacad
+LDFLAGS="-L/usr/local/opt/llvm@8/lib -Wl,-rpath,/usr/local/opt/llvm@8/lib"
+CPPFLAGS="-I/usr/local/opt/llvm@8/include"
 
 # make with the nice completion
 autoload -U compinit; compinit
@@ -142,7 +145,6 @@ typeset -aU path
 command -v brew > /dev/null && [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
@@ -193,4 +195,5 @@ _gen_fzf_default_opts() {
 }
 _gen_fzf_default_opts
 
- export BAT_THEME="Solarized (light)"
+export BAT_THEME="Solarized (light)"
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
