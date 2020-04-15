@@ -113,8 +113,9 @@ alias 'gs'='git stash'
 alias 'gsp'='git stash pop'
 alias 'cprmt'='less ~/repos/misc/rmt.md | pbcopy'
 alias 'cpemd'='less ~/repos/misc/emd.md | pbcopy'
+alias 'cpsfk'='less ~/repos/sfmc/key | pbcopy'
 alias 'add-ssh-key'='ssh-add -K ~/.ssh/id_rsa'
-export IMAC='ryanmoret@192.168.1.81'
+export IMAC='ryanmoret@192.168.1.79'
 alias 'ssh-imac'='ssh $IMAC'
 
 l.() {
@@ -155,3 +156,11 @@ bindkey "\e[3~" delete-char
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+my-backward-delete-word() {
+    local WORDCHARS="*?-[]~=&;!#$%^(){}<>"
+    # local WORDCHARS=${WORDCHARS/\//}
+    zle backward-delete-word
+}
+zle -N my-backward-delete-word
+bindkey '^W' my-backward-delete-word

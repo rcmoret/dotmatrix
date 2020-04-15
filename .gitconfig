@@ -47,7 +47,7 @@
 [diff]
 	algorithm = patience
 [include]
-	path = ~/.gitconfig.local
+	path = ~/repos/dotmatrix/.gitconfig.local
 [fetch]
 	prune = true
 [add]

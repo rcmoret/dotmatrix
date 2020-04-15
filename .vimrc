@@ -39,6 +39,11 @@ set guioptions-=T guioptions-=e guioptions-=L guioptions-=r
 set shell=bash
 set wrap!
 
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+
 autocmd VimResized * wincmd =
 
 augroup vimrc
