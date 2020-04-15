@@ -74,6 +74,11 @@ if [ -f '/usr/local/etc/bash_completion.d/git-completion.bash' ]; then
   source '/usr/local/etc/bash_completion.d/git-completion.bash'
 fi
 
+# Aliases
+# * Additional aliases are found in `.sharedrc`
+#
+alias reload='source ~/.bash_profile; echo -e "\n\u2699  \033[0;33mBASH config reloaded\033[0m \u2699"'
+
 # use `g` like git
 _g() {
   if [[ $# > 0 ]]; then
@@ -92,6 +97,3 @@ __git_complete g _git
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
