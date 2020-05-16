@@ -14,6 +14,7 @@ export ZLS_COLORS=$LSCOLORS
 export LC_CTYPE=en_US.UTF-8
 export LESS=FRX
 
+export FZF_CTRL_T_OPTS=" --preview 'bat --style=numbers --color=always {} | head -500'"
 # make with the nice completion
 autoload -U compinit; compinit
 
@@ -164,3 +165,15 @@ my-backward-delete-word() {
 }
 zle -N my-backward-delete-word
 bindkey '^W' my-backward-delete-word
+
+export FZF_CTRL_T_OPTS=" --preview 'bat --style=numbers --color=always {} | head -500'"
+# export FZF_DEFAULT_OPTS="
+#   --color=light,fg:232,bg:-1,bg+:116,info:27,preview-bg:-1
+#   --color=hl:33
+# "
+# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+export FZF_DEFAULT_OPTS='
+--color=light
+--color fg:-1,bg:-1,hl:33,fg+:235,bg+:235,hl+:33
+ '
+ export BAT_THEME="GitHub"
