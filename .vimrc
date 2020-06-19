@@ -26,6 +26,7 @@ set rtp+=/usr/local/opt/fzf
 command! -bang -nargs=? -complete=dir GFiles
     \ call fzf#vim#gitfiles(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/bundle/fzf.vim/bin/preview.sh {}']}, <bang>0)
 nnoremap <C-p> :GFiles<cr>
+let g:github_enterprise_urls = ['https://git.innova-partners.com']
 let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit'
