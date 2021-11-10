@@ -60,8 +60,6 @@ set wrap!
 
 autocmd VimResized * wincmd =
 
-set wrap!
-
 augroup vimrc
   autocmd!
   autocmd GuiEnter * set columns=120 lines=70 number
@@ -90,6 +88,7 @@ augroup END
           \   'elixir': ['mix_format'],
           \}
 
+    let g:ale_linters = { 'crystal': [] }
     " let g:ale_fix_on_save = 1
   " }}}
 
