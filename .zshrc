@@ -140,21 +140,32 @@ alias 'gg'='git log --oneline --abbrev-commit --all --graph --color | head'
 alias 'grh'='git reset HEAD'
 alias 'gs'='git stash'
 alias 'gsp'='git stash pop'
+<<<<<<< HEAD
 alias 'gpu'='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
+=======
+>>>>>>> 6b5a3eb (asdf over rvm)
 alias 'cprmt'='less ~/repos/misc/rmt.md | pbcopy'
 alias 'cpemd'='less ~/repos/misc/emd.md | pbcopy'
 alias 'cpsfk'='less ~/repos/sfmc/key | pbcopy'
 alias 'add-ssh-key'='ssh-add -K ~/.ssh/id_rsa'
 export IMAC='ryanmoret@192.168.1.66'
 alias 'ssh-imac'='ssh $IMAC'
+<<<<<<< HEAD
 alias 'routes'="bundle exec rails routes | fzf"
 alias 'bam'='bundle install && RAILS_ENV=test bundle exec rails db:migrate && RAILS_ENV=development bundle exec rails db:migrate'
+=======
+>>>>>>> 6b5a3eb (asdf over rvm)
 
 l.() {
   ls -ld "${1:-$PWD}"/.[^.]*
 }
 
+<<<<<<< HEAD
 export ASDF_RUBY_BUILD_VERSION=master
+=======
+export PLATFORM_DEV="$HOME/repos/dev"
+shovel() ( $PLATFORM_DEV/script/run shovel "$@"; )
+>>>>>>> 6b5a3eb (asdf over rvm)
 
 cuke() {
   local file="$1"
@@ -231,4 +242,3 @@ export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
 export ASDF_DIR=/usr/local/opt/asdf/libexec
 . /usr/local/opt/asdf/asdf.sh
-# . /usr/local/opt/asdf/libexec/asdf.sh

@@ -96,9 +96,6 @@ clone_if_necessary() {
     for example in "$path"/config/*.example.yml; do
       cp "$example" "${example%.example.yml}.yml"
     done 2>/dev/null
-    if [ -f "$path/.rvmrc" ] && command -v __rvm_trust_rvmrc >/dev/null; then
-      __rvm_trust_rvmrc "$path/.rvmrc"
-    fi
   fi
   return 0
 }
