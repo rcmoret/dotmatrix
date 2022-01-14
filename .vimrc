@@ -19,7 +19,7 @@ set visualbell
 set wildmenu
 set wildmode=list:longest,full
 
-colorscheme vylight
+colorscheme colorsbox-stblue
 
 set rtp+=/usr/local/opt/fzf
 
