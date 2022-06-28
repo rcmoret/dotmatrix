@@ -156,7 +156,6 @@ l.() {
 
 export ASDF_RUBY_BUILD_VERSION=master
 export PLATFORM_DEV="$HOME/repos/dev"
-shovel() ( $PLATFORM_DEV/script/run shovel "$@"; )
 
 cuke() {
   local file="$1"
@@ -233,3 +232,4 @@ export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
 export ASDF_DIR=/usr/local/opt/asdf/libexec
 . /usr/local/opt/asdf/asdf.sh
+# . /usr/local/opt/asdf/libexec/asdf.sh
