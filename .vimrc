@@ -26,7 +26,7 @@ set rtp+=/usr/local/opt/fzf
 command! -bang -nargs=? -complete=dir GFiles
     \ call fzf#vim#gitfiles(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/bundle/fzf.vim/bin/preview.sh {}']}, <bang>0)
 nnoremap <C-p> :GFiles<cr>
-let g:github_enterprise_urls = ['https://git.innova-partners.com']
+let g:github_enterprise_urls = ['']
 let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit'
@@ -87,6 +87,9 @@ augroup END
           \   'zsh': ['shfmt'],
           \   'elixir': ['mix_format'],
           \}
+    let g:ale_linters = {
+          \   'ruby': ['rubocop'],
+          \}
 
     let g:ale_linters = { 'crystal': [] }
     " let g:ale_fix_on_save = 1
@@ -95,22 +98,22 @@ augroup END
 " }}}
 
 " Tab navigation
-nnoremap tt :tabnew<CR>
-nnoremap tT :tab split<CR>
-nnoremap tq :tabclose<CR>
-nnoremap tn :tabnext<CR>
-nnoremap tN :tabmove +1<CR>
-nnoremap tp :tabprev<CR>
-nnoremap tP :tabmove -1<CR>
-nnoremap t1 1gt
-nnoremap t2 2gt
-nnoremap t3 3gt
-nnoremap t4 4gt
-nnoremap t5 5gt
-nnoremap t6 6gt
-nnoremap t7 7gt
-nnoremap t8 8gt
-nnoremap t9 9gt
+nnoremap <silent> tt :tabnew<CR>
+nnoremap <silent> tT :tab split<CR>
+nnoremap <silent> tq :tabclose<CR>
+nnoremap <silent> tn :tabnext<CR>
+nnoremap <silent> tN :tabmove +1<CR>
+nnoremap <silent> tp :tabprev<CR>
+nnoremap <silent> tP :tabmove -1<CR>
+nnoremap <silent> t1 1gt
+nnoremap <silent> t2 2gt
+nnoremap <silent> t3 3gt
+nnoremap <silent> t4 4gt
+nnoremap <silent> t5 5gt
+nnoremap <silent> t6 6gt
+nnoremap <silent> t7 7gt
+nnoremap <silent> t8 8gt
+nnoremap <silent> t9 9gt
 
 nnoremap <Tab> <C-w>w
 nnoremap <S-Tab> <C-w>W
@@ -118,3 +121,12 @@ nnoremap <S-Tab> <C-w>W
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
+
+let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_disable_when_zoomed = 1
+
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+" nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>

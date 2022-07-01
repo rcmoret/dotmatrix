@@ -1,11 +1,12 @@
 fpath=(
   $fpath
-  ~/.rvm/scripts/zsh/Completion
   ~/.zsh/functions
   /usr/local/share/zsh/site-functions
 )
 
 source "$HOME/.sharedrc"
+
+stty sane
 
 # color term
 export CLICOLOR=1
@@ -120,10 +121,40 @@ export PSQL_EDITOR='vim -c"setf sql"'
 # Aliases
 # * Additional aliases are found in `.sharedrc`
 #
+alias l="ls -F -G -lah"
+alias ll="ls -la"
+alias la="ls -a"
+alias lsd='ls -ld *(-/DN)'
+alias md='mkdir -p'
+alias rd='rmdir'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias groutes='rake routes | grep $@'
 alias reload='source ~/.zshrc; echo -e "\n\u2699  \e[33mZSH config reloaded\e[0m \u2699"'
 
-# rvm-install added line:
-if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then source "$HOME/.rvm/scripts/rvm" ; fi
+alias 'be'='bundle exec'
+alias 'g'='git status'
+alias 'gbr'='git branch'
+alias 'ggl'='git log --oneline --abbrev-commit --all --graph --color --decorate'
+alias 'gg'='git log --oneline --abbrev-commit --all --graph --color | head'
+alias 'grh'='git reset HEAD'
+alias 'gs'='git stash'
+alias 'gsp'='git stash pop'
+alias 'gpu'='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
+alias 'cprmt'='less ~/repos/misc/rmt.md | pbcopy'
+alias 'cpemd'='less ~/repos/misc/emd.md | pbcopy'
+alias 'cpsfk'='less ~/repos/sfmc/key | pbcopy'
+alias 'add-ssh-key'='ssh-add -K ~/.ssh/id_rsa'
+export IMAC='ryanmoret@192.168.1.66'
+alias 'ssh-imac'='ssh $IMAC'
+alias 'routes'="bundle exec rails routes | fzf"
+alias 'bam'='bundle install && RAILS_ENV=test bundle exec rails db:migrate && RAILS_ENV=development bundle exec rails db:migrate'
+
+l.() {
+  ls -ld "${1:-$PWD}"/.[^.]*
+}
+
+export ASDF_RUBY_BUILD_VERSION=master
 
 cuke() {
   local file="$1"
@@ -142,16 +173,16 @@ cdpath=(~ ~/src $DEV_DIR $SOURCE_DIR)
 # remove duplicates in $PATH
 typeset -aU path
 
+export PATH=/usr/local/opt/postgresql@12/bin:$PATH:/Users/ryanmoret/Library/Python/3.8/bin:/Users/ryanmoret/scripts:/usr/local/opt/libpq/bin
+
 command -v brew > /dev/null && [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
 bindkey "\e[3~" delete-char
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 my-backward-delete-word() {
     local WORDCHARS="*?-[]~=&;!#$%^(){}<>"
@@ -197,3 +228,7 @@ _gen_fzf_default_opts
 
 export BAT_THEME="Solarized (light)"
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
+export ASDF_DIR=/usr/local/opt/asdf/libexec
+. /usr/local/opt/asdf/asdf.sh
+# . /usr/local/opt/asdf/libexec/asdf.sh
