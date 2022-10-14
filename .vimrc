@@ -19,8 +19,6 @@ set visualbell
 set wildmenu
 set wildmode=list:longest,full
 
-colorscheme colorsbox-stblue
-
 set rtp+=/usr/local/opt/fzf
 
 command! -bang -nargs=? -complete=dir GFiles
@@ -79,16 +77,17 @@ augroup END
     " nnoremap <silent> <leader>pe :ALEPreviousWrap<CR>
 
     let g:ale_fixers = {
-          \   'javascript': ['prettier'],
-          \   'javascript.jsx': ['prettier'],
           \   'json': ['prettier'],
           \   'scss': ['prettier'],
           \   'bash': ['shfmt'],
           \   'zsh': ['shfmt'],
           \   'elixir': ['mix_format'],
           \}
-    let g:ale_linters = {
+    let b:ale_linters = {
           \   'ruby': ['rubocop'],
+          \}
+    let g:ale_linters_ignore = {
+          \   'ruby': ['standardrb', 'brakeman'],
           \}
 
     let g:ale_linters = { 'crystal': [] }
@@ -96,11 +95,13 @@ augroup END
   " }}}
 
 " }}}
+let g:ale_ruby_rubocop_executable = 'bin/rubocop'
 
 " Tab navigation
 nnoremap <silent> tt :tabnew<CR>
 nnoremap <silent> tT :tab split<CR>
 nnoremap <silent> tq :tabclose<CR>
+nnoremap <silent> tQ :tabclose!<CR>
 nnoremap <silent> tn :tabnext<CR>
 nnoremap <silent> tN :tabmove +1<CR>
 nnoremap <silent> tp :tabprev<CR>
@@ -115,8 +116,8 @@ nnoremap <silent> t7 7gt
 nnoremap <silent> t8 8gt
 nnoremap <silent> t9 9gt
 
-nnoremap <Tab> <C-w>w
-nnoremap <S-Tab> <C-w>W
+nnoremap <silent> <Tab> :tabnext<CR>
+nnoremap <silent> <S-Tab> :tabprev<CR>
 
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
@@ -130,3 +131,24 @@ nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 " nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+
+colorscheme rusty
+
+" cursor styles
+" 1 or 0 -> blinking block
+" 3 -> blinking underscore
+" Recent versions of xterm (282 or above) also support
+" 5 -> blinking vertical bar
+" 6 -> solid vertical bar
+if &term =~ "xterm\\|rxvt"
+  " cursor in insert mode
+  let &t_SI = "\<Esc>]12;blue\x7"
+  let &t_SI .= "\<Esc>[3 q"
+  " cursor otherwise
+  let &t_EI = "\<Esc>]12;grey\x7"
+  let &t_EI .= "\<Esc>[0 q"
+  silent !echo -ne "\033]12;grey\007"
+  " reset cursor when vim exits
+  autocmd VimLeave * silent !echo -ne "\033]112\007"
+  " use \003]12;gray\007 for gnome-terminal and rxvt up to version 9.21
+endif

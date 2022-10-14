@@ -75,8 +75,8 @@ Plug 'christoomey/vim-tmux-runner'
 Plug 'christoomey/vim-tmux-navigator'
 
 " staticly check code and highlight errors (async syntastic replacement)
-" Plug 'w0rp/ale'
-Plug 'dense-analysis/ale'
+Plug 'w0rp/ale'
+" Plug 'dense-analysis/ale'
 
 if filereadable(expand('~/.vimbundle.local'))
   source ~/.vimbundle.local
