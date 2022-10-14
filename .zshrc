@@ -18,7 +18,6 @@ export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
 export FZF_CTRL_T_OPTS=" --preview 'bat --style=numbers --color=always {} | head -500'"
 export VISUAL EDITOR LESS RI PSQL_EDITOR CLICOLOR LSCOLORS
-export IMAC='ryanmoret@192.168.1.79'
 
 VISUAL=vim
 EDITOR="$VISUAL"
@@ -145,8 +144,6 @@ alias 'cprmt'='less ~/repos/misc/rmt.md | pbcopy'
 alias 'cpemd'='less ~/repos/misc/emd.md | pbcopy'
 alias 'cpsfk'='less ~/repos/sfmc/key | pbcopy'
 alias 'add-ssh-key'='ssh-add -K ~/.ssh/id_rsa'
-export IMAC='ryanmoret@192.168.1.66'
-alias 'ssh-imac'='ssh $IMAC'
 alias 'routes'="bundle exec rails routes | fzf"
 alias 'bam'='bundle install && RAILS_ENV=test bundle exec rails db:migrate && RAILS_ENV=development bundle exec rails db:migrate'
 
@@ -231,5 +228,4 @@ export BAT_THEME="Solarized (light)"
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
 export ASDF_DIR=/usr/local/opt/asdf/libexec
-. /usr/local/opt/asdf/asdf.sh
-# . /usr/local/opt/asdf/libexec/asdf.sh
+. /usr/local/opt/asdf/libexec/asdf.sh
