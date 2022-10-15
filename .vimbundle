@@ -73,6 +73,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'flazz/vim-colorschemes'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'keith/rspec.vim'
 
 " staticly check code and highlight errors (async syntastic replacement)
 Plug 'w0rp/ale'
