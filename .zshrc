@@ -98,6 +98,7 @@ alias 'gbr'='git branch'
 alias 'ggl'='git log --oneline --abbrev-commit --all --graph --color --decorate'
 alias 'gg'='git log --oneline --abbrev-commit --all --graph --color | head'
 alias 'grh'='git reset HEAD'
+alias 'gpu'='git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
 alias 'gs'='git stash'
 alias 'gsp'='git stash pop'
 alias 'll'='ls -la'
@@ -171,14 +172,11 @@ cdpath=(~ ~/src $DEV_DIR $SOURCE_DIR)
 # remove duplicates in $PATH
 typeset -aU path
 
-export PATH=/usr/local/opt/postgresql@12/bin:$PATH:/Users/ryanmoret/Library/Python/3.8/bin:/Users/ryanmoret/scripts:/usr/local/opt/libpq/bin
+export PATH=/usr/local/opt/postgresql@14/bin:$PATH:/Users/ryanmoret/Library/Python/3.8/bin:/Users/ryanmoret/scripts:/usr/local/opt/libpq/bin
 
 command -v brew > /dev/null && [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 bindkey "\e[3~" delete-char
 
@@ -229,3 +227,6 @@ export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
 export ASDF_DIR=/usr/local/opt/asdf/libexec
 . /usr/local/opt/asdf/libexec/asdf.sh
+
+export GEM_HOME="$HOME/.gem"
+export GEM_PATH="$HOME/.gem"
