@@ -67,7 +67,7 @@
 	newNormal = green bold
 	newHighlight = green bold 155
 [color "diff"]
-	meta = 20
+	meta = 177
 	frag = 93
 	func = 81
 	commit = 20

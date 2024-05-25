@@ -222,11 +222,12 @@ _gen_fzf_default_opts() {
 }
 _gen_fzf_default_opts
 
+export GEM_HOME="$HOME/.gem"
+export GEM_PATH="$HOME/.gem"
+
 export BAT_THEME="Solarized (light)"
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export PATH="/Users/ryanmoret/.asdf/shims/ruby:$PATH"
 
 export ASDF_DIR=/usr/local/opt/asdf/libexec
 . /usr/local/opt/asdf/libexec/asdf.sh
-
-export GEM_HOME="$HOME/.gem"
-export GEM_PATH="$HOME/.gem"
