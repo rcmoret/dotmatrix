@@ -19,11 +19,11 @@ export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 export FZF_CTRL_T_OPTS=" --preview 'bat --style=numbers --color=always {} | head -500'"
 export VISUAL EDITOR LESS RI PSQL_EDITOR CLICOLOR LSCOLORS
 
-VISUAL=vim
+VISUAL=nvim
 EDITOR="$VISUAL"
 LESS="FRX"
 RI="--format ansi -T"
-PSQL_EDITOR='vim -c"setf sql"'
+PSQL_EDITOR='nvim -c"setf sql"'
 CLICOLOR=1
 LSCOLORS=gxgxcxdxbxegedabagacad
 LDFLAGS="-L/usr/local/opt/llvm@8/lib -Wl,-rpath,/usr/local/opt/llvm@8/lib"
@@ -92,16 +92,6 @@ else
 fi
 PROMPT="$p%{\$reset_color%}:%{\$fg_bold[cyan]%}%~%{\$reset_color%}\$(git_prompt_info '(%s)')~> "
 
-alias 'be'='bundle exec'
-alias 'g'='git status'
-alias 'gbr'='git branch'
-alias 'ggl'='git log --oneline --abbrev-commit --all --graph --color --decorate'
-alias 'gg'='git log --oneline --abbrev-commit --all --graph --color | head'
-alias 'grh'='git reset HEAD'
-alias 'gpu'='git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
-alias 'gs'='git stash'
-alias 'gsp'='git stash pop'
-alias 'll'='ls -la'
 
 # show non-success exit code in right prompt
 RPROMPT="%(?..{%{$fg[red]%}%?%{$reset_color%}})"
@@ -115,8 +105,8 @@ setopt INC_APPEND_HISTORY
 
 # default apps
 (( ${+PAGER}   )) || export PAGER='less'
-(( ${+EDITOR}  )) || export EDITOR='vim'
-export PSQL_EDITOR='vim -c"setf sql"'
+(( ${+EDITOR}  )) || export EDITOR='nvim'
+export PSQL_EDITOR='nvim -c"setf sql"'
 
 # Aliases
 # * Additional aliases are found in `.sharedrc`
@@ -141,6 +131,9 @@ alias 'grh'='git reset HEAD'
 alias 'gs'='git stash'
 alias 'gsp'='git stash pop'
 alias 'gpu'='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
+alias 'gbc'='git rev-parse --abbrev-ref HEAD'
+alias 'gbc!'='git branch | grep -v $(git rev-parse --abbrev-ref HEAD) | grep -v main | xargs git branch -D'
+alias 'gcb'='git checkout $(git branch | fzf)'
 alias 'cprmt'='less ~/repos/misc/rmt.md | pbcopy'
 alias 'cpemd'='less ~/repos/misc/emd.md | pbcopy'
 alias 'cpsfk'='less ~/repos/sfmc/key | pbcopy'
@@ -231,3 +224,11 @@ export PATH="/Users/ryanmoret/.asdf/shims/ruby:$PATH"
 
 export ASDF_DIR=/usr/local/opt/asdf/libexec
 . /usr/local/opt/asdf/libexec/asdf.sh
+
+# pnpm
+export PNPM_HOME="/Users/ryanmoret/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
