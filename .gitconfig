@@ -62,17 +62,17 @@
 [interactive]
 	diffFilter = diff-so-fancy --patch
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 204
-	newNormal = green bold
-	newHighlight = green bold 155
+	oldNormal = 197
+	oldHighlight = 124 209
+	newNormal = 46
+	newHighlight = 28 193
 [color "diff"]
 	meta = 177
-	frag = 93
+	frag = 45
 	func = 81
-	commit = 20
-	old = red bold
-	new = green bold
+	commit = 244
+	old = 197
+	new = 46
 	whitespace = red reverse
 [diff-so-fancy]
 	markEmptyLines = false
