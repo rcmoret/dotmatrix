@@ -65,4 +65,21 @@ if [ ! -e "$HOME/.gitconfig.local" ]; then
   echo -e "Reminder: pass the --workstation flag to copy this file automatically.\n"
 fi
 
+dot_config_path=".config"
+if [ ! -d $HOME/$config_path ]; then
+  create_notice "~/$dot_config_path" "absent"
+  mkdir -p $HOME/$dot_config_path
+else
+  skip_notice "~/$dot_config_path" "exists"
+fi
+
+for config_dir in .config/* ; do
+  if [ ! -d $HOME/$config_dir ]; then
+    link_notice $config_dir "absent"
+    ln -nfs $PWD/$config_dir $HOME/$config_dir
+  else
+    skip_notice "~/$config_dir" "exists"
+  fi
+done
+
 $PWD/hr/bin/hr autoinstall
