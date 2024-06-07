@@ -56,6 +56,14 @@ return {
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     mappings = {
       -- first key is the mode
+      v = {
+        ["J"] = { ":m '>+1<CR>gv=gv" },
+        ["K"] = { ":m '<-2<CR>gv=gv" },
+        ["<Leader>p"] = { "\"_dP" },
+      },
+      x = {
+        ["<Leader>p"] = { "\"_dP" },
+      },
       n = {
         -- second key is the lefthand side of the map
 
@@ -91,6 +99,13 @@ return {
         ["<Tab>"] = { "<cmd>tabnext<cr>", desc = "Go to next tab" },
         ["<S-Tab>"] = { "<cmd>tabprev<cr>", desc = "Go to prev tab" },
         ["<Leader>fd"] = { "<cmd>Telescope dir live_grep<CR>", desc = "Find in directory" },
+
+        ["J"] = { "mzJ`z" },
+        ["<C-d>"] = { "<C-d>zz" },
+        ["<C-u>"] = { "<C-u>zz" },
+        ["n"] = { "nzzzv" },
+        ["N"] = { "Nzzzv" },
+        ["<leader>s"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]] },
 
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
