@@ -84,6 +84,7 @@ return {
 
         ["<Leader>b"] = { name = "Buffers" },
         ["<Leader>t"] = { desc = "Tab controls" },
+        ["<Leader>gB"] = { "<cmd>GBrowse<cr>", desc = "Open in Browser" },
         ["<Leader>tt"] = { "<cmd>tabnew<cr>", desc = "Open new tab" },
         ["<Leader>tn"] = { "<cmd>tabnext<cr>", desc = "Go to next tab" },
         ["<Leader>tp"] = { "<cmd>tabprev<cr>", desc = "Go to previous tab" },
