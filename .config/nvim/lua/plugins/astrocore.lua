@@ -47,6 +47,7 @@ return {
         }
       },
       g = { -- vim.g.<key>
+        ["$PATH"] = { "$HOME/.config/nvim" }
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
@@ -81,6 +82,7 @@ return {
           desc = "Close buffer from tabline",
         },
         ["<Leader>bb"] = { "<cmd>Telescope buffers<cr>", desc = "Horizontal split buffer from tabline" },
+        -- ["<C-p>"] = { "<cmd>Telescop find_files<cr>" },
 
         ["<Leader>b"] = { name = "Buffers" },
         ["<Leader>t"] = { desc = "Tab controls" },
