@@ -15,6 +15,7 @@ export ZLS_COLORS=$LSCOLORS
 export LC_CTYPE=en_US.UTF-8
 export LESS=FRX
 export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
+export NVIM_PKG_PATH="$HOME/.local/share/nvim/site/pack/packer/start"
 
 export FZF_CTRL_T_OPTS=" --preview 'bat --style=numbers --color=always {} | head -500'"
 export VISUAL EDITOR LESS RI PSQL_EDITOR CLICOLOR LSCOLORS
