@@ -1,3 +1,4 @@
 FILES
+.vim/undodir/*
 .vim/bundle
 .vim/.netrwhist
