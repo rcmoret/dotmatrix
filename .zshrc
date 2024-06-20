@@ -122,6 +122,8 @@ alias cd..='cd ..'
 alias ..='cd ..'
 alias groutes='rake routes | grep $@'
 alias reload='source ~/.zshrc; echo -e "\n\u2699  \e[33mZSH config reloaded\e[0m \u2699"'
+-- why the fuck is smartcase on by default?
+alias ag="ag -s"
 
 alias 'be'='bundle exec'
 alias 'g'='git status'
