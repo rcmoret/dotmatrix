@@ -24,6 +24,7 @@
 	recent = for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/ # https://twitter.com/djm_/status/961289486721339392
 	clone-all = clone --recurse-submodules
 	pull-all = pull --recurse-submodules
+  undo = reset HEAD^
 [branch]
 	autosetuprebase = always
 [color]

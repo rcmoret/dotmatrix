@@ -122,8 +122,11 @@ alias cd..='cd ..'
 alias ..='cd ..'
 alias groutes='rake routes | grep $@'
 alias reload='source ~/.zshrc; echo -e "\n\u2699  \e[33mZSH config reloaded\e[0m \u2699"'
--- why the fuck is smartcase on by default?
+# why the fuck is smartcase on by default?
 alias ag="ag -s"
+alias jq="jq --color-output | less -R"
+
+alias mdkir="mkdir"
 
 alias 'be'='bundle exec'
 alias 'g'='git status'
@@ -134,9 +137,11 @@ alias 'grh'='git reset HEAD'
 alias 'gs'='git stash'
 alias 'gsp'='git stash pop'
 alias 'gpu'='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
-alias 'gbrc'='git rev-parse --abbrev-ref HEAD'
-alias 'gbc!'='git branch | grep -v $(git rev-parse --abbrev-ref HEAD) | grep -v main | xargs git branch -D'
-alias 'gcb'='git checkout $(git branch | fzf)'
+alias 'gbrc'='git branch --show-current'
+alias 'gcb'='~/scripts/git-change-branch.sh'
+alias 'gsno'='git show --name-only'
+alias 'gdno'='git diff --name-only'
+alias 'gdnoom'='git diff --name-only origin/main'
 alias 'cprmt'='less ~/repos/misc/rmt.md | pbcopy'
 alias 'cpemd'='less ~/repos/misc/emd.md | pbcopy'
 alias 'cpsfk'='less ~/repos/sfmc/key | pbcopy'
@@ -173,6 +178,7 @@ export PATH=/usr/local/opt/postgresql@14/bin:$PATH:/Users/ryanmoret/Library/Pyth
 command -v brew > /dev/null && [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey '^P' fzf-file-widget
 
 bindkey "\e[3~" delete-char
 
