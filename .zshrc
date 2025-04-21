@@ -136,12 +136,15 @@ alias 'gg'='git log --oneline --abbrev-commit --all --graph --color | head'
 alias 'grh'='git reset HEAD'
 alias 'gs'='git stash'
 alias 'gsp'='git stash pop'
-alias 'gpu'='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
-alias 'gbrc'='git branch --show-current'
+alias 'gpu'='git push -u origin $(git branch --show-current)'
+alias 'gbcr'='git branch --show-current'
 alias 'gcb'='~/scripts/git-change-branch.sh'
 alias 'gsno'='git show --name-only'
 alias 'gdno'='git diff --name-only'
 alias 'gdnoom'='git diff --name-only origin/main'
+alias 'gcp'='git cherry-pick'
+alias 'gca'='git cherry-pick --abort'
+alias 'gcc'='git cherry-pick --continue'
 alias 'cprmt'='less ~/repos/misc/rmt.md | pbcopy'
 alias 'cpemd'='less ~/repos/misc/emd.md | pbcopy'
 alias 'cpsfk'='less ~/repos/sfmc/key | pbcopy'
@@ -225,14 +228,18 @@ _gen_fzf_default_opts() {
 _gen_fzf_default_opts
 
 export GEM_HOME="$HOME/.gem"
-export GEM_PATH="$HOME/.gem"
+export GEM_PATH="$HOME/.gem/bin"
 
 export BAT_THEME="Solarized (light)"
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-export PATH="/Users/ryanmoret/.asdf/shims/ruby:$PATH"
+# export PATH="/Users/ryanmoret/.asdf/shims/$PATH"
+PATH="$HOME/.local/share/mise/shims:$PATH"
 
-export ASDF_DIR=/usr/local/opt/asdf/libexec
-. /usr/local/opt/asdf/libexec/asdf.sh
+PATH="$GEM_PATH:$PATH"
+PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# export ASDF_DIR=/usr/local/opt/asdf/libexec
+# . /usr/local/opt/asdf/libexec/asdf.sh
 
 # pnpm
 export PNPM_HOME="/Users/ryanmoret/Library/pnpm"
@@ -241,3 +248,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+source <(fzf --zsh)
+export LSP_LOGS=$HOME/.local/state/nvim/lsp.log
+
+# eval "$(~/.local/bin/mise activate zsh)"

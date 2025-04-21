@@ -10,7 +10,7 @@ filetype plugin indent on
 
 " set ignorecase
 set smartcase
-set number
+set rnu
 set autoread
 au CursorHold * checktime
 
@@ -132,7 +132,8 @@ nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 " nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
-colorscheme rusty
+" colorscheme rusty
+colorscheme lunaperche
 
 " cursor styles
 " 1 or 0 -> blinking block
