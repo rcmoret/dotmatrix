@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-set -e
-
-echo 'hello from the docker install script'
 
 # colors
 
@@ -37,20 +34,30 @@ remove_notice() {
   print_padded "${red}Removing${normal} $1" "$2" $red
 }
 
-# Other functions
+# Determine HOME directory (important in Docker)
+# if [ -z "$HOME" ]; then
+#     HOME=$(eval echo ~$(whoami))
+# fi
 
-directory_warning() {
-  name=$(basename $0)
-  if [[ ! "$PWD/bin/$name" -ef "$0" ]]; then
-    echo "${yellow}Please run '$name' from dotmatrix root folder${normal}"
-    exit 1
-  fi
-}
+# echo "Installing .bashrc to: $HOME/.bashrc"
 
-dirty_warning() {
-  if [ -n "$(git status --porcelain)" ]; then
-    echo "${red}ERROR: You have a dirty working copy.${normal}"
-    echo "Commit or clean any changes, and run bin/upgrade again."
-    exit 1
-  fi
-}
+# # Check if curl is available
+# if ! command -v curl &> /dev/null; then
+#     echo "${red}ERROR: curl is not installed${normal}"
+#     echo "Please install curl first: apt-get update && apt-get install -y curl"
+#     exit 1
+# fi
+
+# # Ensure HOME directory exists
+# if [ ! -d "$HOME" ]; then
+#     echo "${yellow}WARNING: HOME directory $HOME does not exist, creating it...${normal}"
+#     mkdir -p "$HOME"
+# fi
+
+# DOTFILES_BRANCH=dotmatrix-version
+
+# Download .bashrc with error handling
+echo "Downloading .bashrc from GitHub..."
+BASHRC_URL="https://raw.githubusercontent.com/rcmoret/dotmatrix/refs/heads/docker-version/.bashrc"
+
+curl -fsSL "$BASHRC_URL" > "/.bashrc"

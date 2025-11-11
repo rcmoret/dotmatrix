@@ -1,9 +1,7 @@
 # ~/.bashrc
 # vim:set ft=sh sw=2 sts=2:
 
-source "$HOME/.sharedrc"
-
-shovel() ( cd ~/vagrant/code/dev && ./script/run shovel "$@"; )
+[ -f "$HOME/.sharedrc" ] && source "$HOME/.sharedrc"
 
 # Store 10,000 history entries
 export HISTSIZE=10000
@@ -11,8 +9,6 @@ export HISTSIZE=10000
 export HISTCONTROL=erasedups
 # Append to history file
 shopt -s histappend
-
-export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
 VISUAL=vim
 EDITOR="$VISUAL"
@@ -25,26 +21,17 @@ LDFLAGS="-L/usr/local/opt/llvm@8/lib -Wl,-rpath,/usr/local/opt/llvm@8/lib"
 CPPFLAGS="-I/usr/local/opt/llvm@8/include"
 
 export VISUAL EDITOR LESS RI PSQL_EDITOR CLICOLOR LSCOLORS
-export IMAC='ryanmoret@192.168.1.81'
 export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
 if [ -f ~/.fzf.bash ]; then
   source ~/.fzf.bash
 fi
 
-export FZF_DEFAULT_COMMAND='
-(git ls-tree -r --name-only HEAD ||
-  find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
-    sed s/^..//) 2> /dev/null'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-if [ -t 1 ]; then
-bind 'set bind-tty-special-chars off'
-bind '"\ep": history-search-backward'
-bind '"\en": history-search-forward'
-bind '"\C-w": backward-kill-word'
-bind '"\C-q": "%-\n"'
-fi
+# export FZF_DEFAULT_COMMAND='
+# (git ls-tree -r --name-only HEAD ||
+#   find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
+#     sed s/^..//) 2> /dev/null'
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export HISTIGNORE="%*"
 
@@ -67,20 +54,20 @@ fi
 # * All aliases are found in `.sharedrc`
 
 # use `g` like git
-_g() {
-  if [[ $# > 0 ]]; then
-    git "$@"
-  else
-    git status
-  fi
-}
+# _g() {
+#   if [[ $# > 0 ]]; then
+#     git "$@"
+#   else
+#     git status
+#   fi
+# }
 
-alias g=_g
-# enable completion for `g`
-__git_complete g _git
+# alias g=_g
+# # enable completion for `g`
+# __git_complete g _git
 
-[ ! -f "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
+# [ ! -f "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
