@@ -153,6 +153,9 @@ alias 'add-ssh-key'='ssh-add -K ~/.ssh/id_rsa'
 alias 'routes'="bundle exec rails routes | fzf"
 alias 'bam'='bundle install && RAILS_ENV=test bundle exec rails db:migrate && RAILS_ENV=development bundle exec rails db:migrate'
 
+alias 'lr'='docker exec -it -u vscode --workdir /workspace roots_devcontainer-app-1 /bin/zsh'
+alias 'lru'='docker start roots_devcontainer-app-1'
+
 l.() {
   ls -ld "${1:-$PWD}"/.[^.]*
 }
@@ -228,14 +231,13 @@ _gen_fzf_default_opts() {
 }
 _gen_fzf_default_opts
 
-export GEM_HOME="$HOME/.gem"
-export GEM_PATH="$HOME/.gem/bin"
+# export GEM_HOME="$HOME/.gem"
+# export GEM_PATH="$HOME/.gem/bin"
 
 export BAT_THEME="Solarized (light)"
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 # export PATH="/Users/ryanmoret/.asdf/shims/$PATH"
 
-PATH="$GEM_PATH:$PATH"
 PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # export ASDF_DIR=/usr/local/opt/asdf/libexec
@@ -252,3 +254,4 @@ source <(fzf --zsh)
 export LSP_LOGS=$HOME/.local/state/nvim/lsp.log
 
 eval "$(~/.local/bin/mise activate zsh)"
+# PATH="$GEM_PATH:$PATH"
