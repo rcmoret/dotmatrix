@@ -110,48 +110,8 @@ setopt INC_APPEND_HISTORY
 export PSQL_EDITOR='nvim -c"setf sql"'
 
 # Aliases
-# * Additional aliases are found in `.sharedrc`
+# * All aliases are found in `.sharedrc`
 #
-alias l="ls -F -G -lah"
-alias ll="ls -la"
-alias la="ls -a"
-alias lsd='ls -ld *(-/DN)'
-alias md='mkdir -p'
-alias rd='rmdir'
-alias cd..='cd ..'
-alias ..='cd ..'
-alias groutes='rake routes | grep $@'
-alias reload='source ~/.zshrc; echo -e "\n\u2699  \e[33mZSH config reloaded\e[0m \u2699"'
-# why the fuck is smartcase on by default?
-alias ag="ag -s"
-alias jq="jq --color-output | less -R"
-
-alias mdkir="mkdir"
-
-alias 'be'='bundle exec'
-alias 'g'='git status'
-alias 'gbr'='git branch'
-alias 'ggl'='git log --oneline --abbrev-commit --all --graph --color --decorate'
-alias 'gg'='git log --oneline --abbrev-commit --all --graph --color | head'
-alias 'grh'='git reset HEAD'
-alias 'gs'='git stash'
-alias 'gsp'='git stash pop'
-alias 'gpu'='git push -u origin $(git branch --show-current)'
-alias 'gbcr'='git branch --show-current'
-alias 'gcb'='~/scripts/git-change-branch.sh'
-alias 'gbl'='~/scripts/git-branch-lookup.sh'
-alias 'gsno'='git show --name-only'
-alias 'gdno'='git diff --name-only'
-alias 'gdnoom'='git diff --name-only origin/main'
-alias 'gcp'='git cherry-pick'
-alias 'gca'='git cherry-pick --abort'
-alias 'gcc'='git cherry-pick --continue'
-alias 'cprmt'='less ~/repos/misc/rmt.md | pbcopy'
-alias 'cpemd'='less ~/repos/misc/emd.md | pbcopy'
-alias 'cpsfk'='less ~/repos/sfmc/key | pbcopy'
-alias 'add-ssh-key'='ssh-add -K ~/.ssh/id_rsa'
-alias 'routes'="bundle exec rails routes | fzf"
-alias 'bam'='bundle install && RAILS_ENV=test bundle exec rails db:migrate && RAILS_ENV=development bundle exec rails db:migrate'
 
 l.() {
   ls -ld "${1:-$PWD}"/.[^.]*

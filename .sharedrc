@@ -127,33 +127,46 @@ gref() {
   command git --no-pager diff --cached --stat | command grep "|\s*0$" | awk '{system("command git reset " $1)}'
 }
 
-# Git aliases
-#
-alias gap='git add -p'
-alias gb='git branch'
-alias gc='git commit -v'
-alias gca='git commit -a -v'
-alias gcl='git clean -f -d'
-alias gco='git checkout'
-alias gd='git diff'
-alias gdc='git diff --cached'
-alias gdh='git diff HEAD'
-alias gl='git pull'
-alias glg='git log --graph --oneline --decorate --color --all'
-alias glod='git log --oneline --decorate'
-alias glp='git log -p'
-alias gnap='git add -N --ignore-removal . && gap && gref'
-alias gp='git push'
-alias gplease='git push --force-with-lease'
-alias gpr='git pull --rebase'
-alias gr='git rebase'
-alias gra='git rebase --abort'
-alias grc='git rebase --continue'
-alias grim='git rebase -i master'
-alias gst='git status'
-alias reset-authors='git commit --amend --reset-author -C HEAD'
-
 # Aliases
+alias l="ls -F -G -lah"
+alias ll="ls -la"
+alias la="ls -a"
+alias lsd='ls -ld *(-/DN)'
+alias md='mkdir -p'
+alias rd='rmdir'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias groutes='rake routes | grep $@'
+alias reload='source ~/.zshrc; echo -e "\n\u2699  \e[33mZSH config reloaded\e[0m \u2699"'
+alias ag="ag -s"
+alias jq="jq --color-output | less -R"
+
+alias mdkir="mkdir"
+
+alias 'be'='bundle exec'
+alias 'g'='git status'
+alias 'gbr'='git branch'
+alias 'ggl'='git log --oneline --abbrev-commit --all --graph --color --decorate'
+alias 'gg'='git log --oneline --abbrev-commit --all --graph --color | head'
+alias 'grh'='git reset HEAD'
+alias 'gs'='git stash'
+alias 'gsp'='git stash pop'
+alias 'gpu'='git push -u origin $(git branch --show-current)'
+alias 'gbcr'='git branch --show-current'
+alias 'gcb'='~/scripts/git-change-branch.sh'
+alias 'gbl'='~/scripts/git-branch-lookup.sh'
+alias 'gsno'='git show --name-only'
+alias 'gdno'='git diff --name-only'
+alias 'gdnoom'='git diff --name-only origin/main'
+alias 'gcp'='git cherry-pick'
+alias 'gca'='git cherry-pick --abort'
+alias 'gcc'='git cherry-pick --continue'
+alias 'cprmt'='less ~/repos/misc/rmt.md | pbcopy'
+alias 'cpemd'='less ~/repos/misc/emd.md | pbcopy'
+alias 'cpsfk'='less ~/repos/sfmc/key | pbcopy'
+alias 'add-ssh-key'='ssh-add -K ~/.ssh/id_rsa'
+alias 'routes'="bundle exec rails routes | fzf"
+alias 'bam'='bundle install && RAILS_ENV=test bundle exec rails db:migrate && RAILS_ENV=development bundle exec rails db:migrate'
 #
 alias vi='vim'
 

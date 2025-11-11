@@ -3,19 +3,6 @@
 
 source "$HOME/.sharedrc"
 
-alias 'be'='bundle exec'
-alias 'g'='git status'
-alias 'gbr'='git branch'
-alias 'ggl'='git log --oneline --abbrev-commit --all --graph --color --decorate'
-alias 'gg'='git log --oneline --abbrev-commit --all --graph --color | head'
-alias 'grh'='git reset HEAD'
-alias 'gs'='git stash'
-alias 'gsp'='git stash pop'
-alias 'll'='ls -la'
-alias 'cprmt'='less ~/repos/misc/rmt.md | pbcopy'
-alias 'cpemd'='less ~/repos/misc/emd.md | pbcopy'
-alias 'add-ssh-key'='ssh-add -K ~/.ssh/id_rsa'
-
 shovel() ( cd ~/vagrant/code/dev && ./script/run shovel "$@"; )
 
 # Store 10,000 history entries
@@ -51,8 +38,6 @@ export FZF_DEFAULT_COMMAND='
     sed s/^..//) 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-alias 'ssh-imac'='ssh $IMAC'
-
 if [ -t 1 ]; then
 bind 'set bind-tty-special-chars off'
 bind '"\ep": history-search-backward'
@@ -79,9 +64,7 @@ if [ -f '/usr/local/etc/bash_completion.d/git-completion.bash' ]; then
 fi
 
 # Aliases
-# * Additional aliases are found in `.sharedrc`
-#
-alias reload='source ~/.bash_profile; echo -e "\n\u2699  \033[0;33mBASH config reloaded\033[0m \u2699"'
+# * All aliases are found in `.sharedrc`
 
 # use `g` like git
 _g() {
