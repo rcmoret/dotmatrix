@@ -139,6 +139,7 @@ alias 'gsp'='git stash pop'
 alias 'gpu'='git push -u origin $(git branch --show-current)'
 alias 'gbcr'='git branch --show-current'
 alias 'gcb'='~/scripts/git-change-branch.sh'
+alias 'gbl'='~/scripts/git-branch-lookup.sh'
 alias 'gsno'='git show --name-only'
 alias 'gdno'='git diff --name-only'
 alias 'gdnoom'='git diff --name-only origin/main'
@@ -233,7 +234,6 @@ export GEM_PATH="$HOME/.gem/bin"
 export BAT_THEME="Solarized (light)"
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 # export PATH="/Users/ryanmoret/.asdf/shims/$PATH"
-PATH="$HOME/.local/share/mise/shims:$PATH"
 
 PATH="$GEM_PATH:$PATH"
 PATH="/opt/homebrew/opt/libpq/bin:$PATH"
@@ -251,4 +251,4 @@ esac
 source <(fzf --zsh)
 export LSP_LOGS=$HOME/.local/state/nvim/lsp.log
 
-# eval "$(~/.local/bin/mise activate zsh)"
+eval "$(~/.local/bin/mise activate zsh)"
