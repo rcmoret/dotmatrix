@@ -34,7 +34,7 @@
 	editor = vim
 	whitespace = cr-at-eol
 	hooksPath = ~/.git/hooks
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = diff-so-fancy | less --tabs=4 -RF
 [help]
 	autocorrect = 10
 [merge]
@@ -47,6 +47,7 @@
 	driver = bundle
 [push]
 	default = tracking
+  autoSetupRemote = true
 [rebase]
 	autosquash = true
 [diff]
@@ -80,5 +81,6 @@
 [diff-so-fancy]
 	markEmptyLines = false
 	stripLeadingSymbols = false
+	changeHunkIndicators = true
 [submodule]
 	recurse = true
