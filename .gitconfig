@@ -30,7 +30,7 @@
 [color]
 	ui = true
 [core]
-	excludesfile = ~/.cvsignore
+	excludesfile = /Users/ryanmoret/.gitignore_global
 	editor = vim
 	whitespace = cr-at-eol
 	hooksPath = ~/.git/hooks
