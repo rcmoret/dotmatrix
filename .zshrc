@@ -17,7 +17,6 @@ export LESS=FRX
 export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 export NVIM_PKG_PATH="$HOME/.local/share/nvim/site/pack/packer/start"
 
-export FZF_CTRL_T_OPTS=" --preview 'bat --style=numbers --color=always {} | head -500'"
 export VISUAL EDITOR LESS RI PSQL_EDITOR CLICOLOR LSCOLORS
 
 VISUAL=nvim
@@ -184,7 +183,6 @@ export PATH=/usr/local/opt/postgresql@14/bin:$PATH:/Users/ryanmoret/Library/Pyth
 
 command -v brew > /dev/null && [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 bindkey '^P' fzf-file-widget
 
 bindkey "\e[3~" delete-char
@@ -197,7 +195,7 @@ my-backward-delete-word() {
 zle -N my-backward-delete-word
 bindkey '^W' my-backward-delete-word
 
-export FZF_CTRL_T_OPTS=" --preview 'bat --style=numbers --color=always {} | head -500'"
+source <(fzf --zsh)
 _gen_fzf_default_opts() {
   local base03="234"
   local base02="235"
@@ -219,11 +217,15 @@ _gen_fzf_default_opts() {
   # Comment and uncomment below for the light theme.
 
   # Solarized Dark color scheme for fzf
+  #
   # export FZF_DEFAULT_OPTS="
   #   --color fg:-1,bg:-1,hl:$blue,fg+:$base2,bg+:$base02,hl+:$blue
   #   --color info:$yellow,prompt:$yellow,pointer:$base3,marker:$base3,spinner:$yellow
   # "
+
+
   ## Solarized Light color scheme for fzf
+  #
   export FZF_DEFAULT_OPTS="
     --color fg:-1,bg:-1,hl:$blue,fg+:$base02,bg+:$base2,hl+:$blue
     --color info:$yellow,prompt:$yellow,pointer:$base03,marker:$base03,spinner:$yellow
@@ -231,17 +233,11 @@ _gen_fzf_default_opts() {
 }
 _gen_fzf_default_opts
 
-# export GEM_HOME="$HOME/.gem"
-# export GEM_PATH="$HOME/.gem/bin"
 
 export BAT_THEME="Solarized (light)"
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-# export PATH="/Users/ryanmoret/.asdf/shims/$PATH"
 
 PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-
-# export ASDF_DIR=/usr/local/opt/asdf/libexec
-# . /usr/local/opt/asdf/libexec/asdf.sh
 
 # pnpm
 export PNPM_HOME="/Users/ryanmoret/Library/pnpm"
@@ -253,5 +249,5 @@ esac
 source <(fzf --zsh)
 export LSP_LOGS=$HOME/.local/state/nvim/lsp.log
 
+eval "$(direnv hook zsh)"
 eval "$(~/.local/bin/mise activate zsh)"
-# PATH="$GEM_PATH:$PATH"

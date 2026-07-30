@@ -4,3 +4,8 @@ IRB.conf[:USE_AUTOCOMPLETE] = false
 
 load File.expand_path("~/.clippy.rb") if File.exist?(File.expand_path("~/.clippy.rb"))
 load File.expand_path("~/.irbrc.local") if File.exist?(File.expand_path("~/.irbrc.local"))
+
+def pbcopy(str)
+  IO.popen('pbcopy', 'w') { |f| f << str.to_s }
+  puts "Copied to clipboard!"
+end

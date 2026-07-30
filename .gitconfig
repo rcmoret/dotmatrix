@@ -53,7 +53,7 @@
 [diff]
 	algorithm = patience
 [include]
-	path = ~/.gitconfig.local
+	path = /Users/ryanmoret/.gitconfig.local
 [fetch]
 	prune = true
 	pruneTags = true
@@ -63,21 +63,11 @@
 	verbose = true
 [init]
 	defaultBranch = main
-[interactive]
-	diffFilter = diff-so-fancy --patch
-[color "diff-highlight"]
-	oldNormal = 197
-	oldHighlight = 124 209
-	newNormal = 46
-	newHighlight = 28 193
-[color "diff"]
-	meta = 177
-	frag = 45
-	func = 81
-	commit = 244
-	old = 197
-	new = 46
-	whitespace = red reverse
+; [include]
+; 	path = /Users/ryanmoret/.gitconfig.colors-light
+[alias]
+    theme-dark = "!git config --global include.path ~/.gitconfig.colors-dark"
+    theme-light = "!git config --global include.path ~/.gitconfig.colors-light"
 [diff-so-fancy]
 	markEmptyLines = false
 	stripLeadingSymbols = false
