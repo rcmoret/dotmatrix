@@ -4,8 +4,6 @@ fpath=(
   /usr/local/share/zsh/site-functions
 )
 
-source "$HOME/.sharedrc"
-
 stty sane
 
 # color term
@@ -83,6 +81,63 @@ if [ -z "$TMUX" ]; then
   bindkey -M viins "^Z" fg-widget
 fi
 
+# Git helpers
+#
+# git_prompt_info accepts 0 or 1 arguments (i.e., format string) and returns
+# the text the prompt appends: branch name, in-progress operation, dirty marks.
+git_prompt_info () {
+  local g="$(command git rev-parse --git-dir 2>/dev/null)"
+  if [ -n "$g" ]; then
+    local r
+    local b
+    local d
+    local s
+    # Rebasing
+    if [ -d "$g/rebase-apply" ] ; then
+      if test -f "$g/rebase-apply/rebasing" ; then
+        r="|REBASE"
+      fi
+      b="$(command git symbolic-ref HEAD 2>/dev/null)"
+    # Interactive rebase
+    elif [ -f "$g/rebase-merge/interactive" ] ; then
+      r="|REBASE-i"
+      b="$(cat "$g/rebase-merge/head-name")"
+    # Merging
+    elif [ -f "$g/MERGE_HEAD" ] ; then
+      r="|MERGING"
+      b="$(command git symbolic-ref HEAD 2>/dev/null)"
+    else
+      if [ -f "$g/BISECT_LOG" ] ; then
+        r="|BISECTING"
+      fi
+      if ! b="$(command git symbolic-ref HEAD 2>/dev/null)" ; then
+        if ! b="$(command git describe --exact-match HEAD 2>/dev/null)" ; then
+          b="$(cut -c1-7 "$g/HEAD")..."
+        fi
+      fi
+    fi
+
+    # Dirty branch
+    d=''
+    s=$(command git status --porcelain 2> /dev/null)
+    [[ $s =~ '\?\? ' ]] && d+='+'
+    [[ $s =~ "M " ]] && d+='*'
+    [[ $s =~ "D " ]] && d+='-'
+
+    printf "${1-"(%s) "}" "${b##refs/heads/}$r$d"
+  fi
+}
+
+# check out a remote branch by name
+gcr() {
+  git checkout -b $1 origin/$1
+}
+
+# git reset empty files
+gref() {
+  command git --no-pager diff --cached --stat | command grep "|\s*0$" | awk '{system("command git reset " $1)}'
+}
+
 # prompt
 p=
 if [ -n "$SSH_CONNECTION" ]; then
@@ -109,7 +164,6 @@ setopt INC_APPEND_HISTORY
 export PSQL_EDITOR='nvim -c"setf sql"'
 
 # Aliases
-# * Additional aliases are found in `.sharedrc`
 #
 alias l="ls -F -G -lah"
 alias ll="ls -la"
@@ -119,15 +173,14 @@ alias md='mkdir -p'
 alias rd='rmdir'
 alias cd..='cd ..'
 alias ..='cd ..'
-alias groutes='rake routes | grep $@'
 alias reload='source ~/.zshrc; echo -e "\n\u2699  \e[33mZSH config reloaded\e[0m \u2699"'
 # why the fuck is smartcase on by default?
 alias ag="ag -s"
 alias jq="jq --color-output | less -R"
 
+# spelling is hard
 alias mdkir="mkdir"
 
-alias 'be'='bundle exec'
 alias 'g'='git status'
 alias 'gbr'='git branch'
 alias 'ggl'='git log --oneline --abbrev-commit --all --graph --color --decorate'
@@ -145,15 +198,20 @@ alias 'gdnoom'='git diff --name-only origin/main'
 alias 'gcp'='git cherry-pick'
 alias 'gca'='git cherry-pick --abort'
 alias 'gcc'='git cherry-pick --continue'
-alias 'cprmt'='less ~/repos/misc/rmt.md | pbcopy'
-alias 'cpemd'='less ~/repos/misc/emd.md | pbcopy'
-alias 'cpsfk'='less ~/repos/sfmc/key | pbcopy'
+alias gap='git add -p'
+alias gco='git checkout'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias glod='git log --oneline --decorate'
+alias gpr='git pull --rebase'
+alias gra='git rebase --abort'
+alias grc='git rebase --continue'
+alias reset-authors='git commit --amend --reset-author -C HEAD'
 alias 'add-ssh-key'='ssh-add -K ~/.ssh/id_rsa'
 alias 'routes'="bundle exec rails routes | fzf"
-alias 'bam'='bundle install && RAILS_ENV=test bundle exec rails db:migrate && RAILS_ENV=development bundle exec rails db:migrate'
 
-alias 'lr'='docker exec -it -u vscode --workdir /workspace roots_devcontainer-app-1 /bin/zsh'
-alias 'lru'='docker start roots_devcontainer-app-1'
+alias vi='nvim'
+alias vim='nvim'
 
 l.() {
   ls -ld "${1:-$PWD}"/.[^.]*
@@ -174,7 +232,7 @@ zrcl="$HOME/.zshrc.local"
 [[ ! -a $zrcl ]] || source $zrcl
 
 # set cd autocompletion to commonly visited directories
-cdpath=(~ ~/src $DEV_DIR $SOURCE_DIR)
+cdpath=(~ ~/repos)
 
 # remove duplicates in $PATH
 typeset -aU path
