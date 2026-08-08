@@ -277,5 +277,15 @@ esac
 # pnpm end
 export LSP_LOGS=$HOME/.local/state/nvim/lsp.log
 
-eval "$(direnv hook zsh)"
-eval "$(~/.local/bin/mise activate zsh)"
+# direnv and mise, if this machine has them. mise may be on PATH (Homebrew) or
+# only at its standalone install location, which is not necessarily on PATH
+# yet at this point -- try both rather than hardcoding one.
+command -v direnv >/dev/null && eval "$(direnv hook zsh)"
+
+for _mise in mise "$HOME/.local/bin/mise"; do
+  if command -v "$_mise" >/dev/null 2>&1; then
+    eval "$("$_mise" activate zsh)"
+    break
+  fi
+done
+unset _mise
