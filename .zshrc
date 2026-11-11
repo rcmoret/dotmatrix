@@ -168,6 +168,7 @@ export PSQL_EDITOR='nvim -c"setf sql"'
 alias l="ls -F -G -lah"
 alias ll="ls -la"
 alias la="ls -a"
+alias lld="ls -lda */"
 alias lsd='ls -ld *(-/DN)'
 alias md='mkdir -p'
 alias rd='rmdir'
@@ -177,6 +178,8 @@ alias reload='source ~/.zshrc; echo -e "\n\u2699  \e[33mZSH config reloaded\e[0m
 # why the fuck is smartcase on by default?
 alias ag="ag -s"
 alias jq="jq --color-output | less -R"
+
+alias nv="nvim"
 
 # spelling is hard
 alias mdkir="mkdir"
@@ -281,6 +284,8 @@ export LSP_LOGS=$HOME/.local/state/nvim/lsp.log
 # only at its standalone install location, which is not necessarily on PATH
 # yet at this point -- try both rather than hardcoding one.
 command -v direnv >/dev/null && eval "$(direnv hook zsh)"
+
+codeSub() { sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g' -e 's/{/\&#123;/g' -e 's/}/\&#125;/g'; }
 
 for _mise in mise "$HOME/.local/bin/mise"; do
   if command -v "$_mise" >/dev/null 2>&1; then
